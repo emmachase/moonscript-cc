@@ -231,7 +231,7 @@ local function deep_update(t1, t2)
           :description "Show this help message and exit."
           :action(function()
              print(self:get_help())
-             os.exit(0)
+             error(nil, 0)
           end)
  
        if value ~= true then
@@ -1086,13 +1086,13 @@ local function deep_update(t1, t2)
        :action(function(_, _, cmd)
           if not cmd then
              print(self:get_help())
-             os.exit(0)
+             error(nil, 0)
           else
              for _, command in ipairs(self._commands) do
                 for _, alias in ipairs(command._aliases) do
                    if alias == cmd then
                       print(command:get_help())
-                      os.exit(0)
+                      error(nil, 0)
                    end
                 end
              end
@@ -1167,7 +1167,7 @@ local function deep_update(t1, t2)
        :choices {"bash", "zsh", "fish"}
        :action(function(_, _, shell)
           io.write(self["get_" .. shell .. "_complete"](self))
-          os.exit(0)
+          error(nil, 0)
        end)
  
     if value then
@@ -1194,7 +1194,7 @@ local function deep_update(t1, t2)
        :choices {"bash", "zsh", "fish"}
        :action(function(_, _, shell)
           io.write(self["get_" .. shell .. "_complete"](self))
-          os.exit(0)
+          error(nil, 0)
        end)
  
     if value then

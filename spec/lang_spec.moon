@@ -1,4 +1,4 @@
-lfs = require "lfs"
+lfs = require "cc.lfs"
 
 import with_dev from require "spec.helpers"
 

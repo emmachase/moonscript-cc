@@ -1,4 +1,4 @@
-local lfs = require("lfs")
+local lfs = require("cc.lfs")
 local split
 split = require("moonscript.util").split
 local dirsep, dirsep_chars, mkdir, normalize_dir, parse_dir, parse_file, convert_path, format_time, gettime, compile_file_text, write_file, compile_and_write, is_abs_path, path_to_target

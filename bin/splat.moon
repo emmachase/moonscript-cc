@@ -2,7 +2,7 @@
 
 -- concatenate a collection of lua modules into one
 
-lfs = require "lfs"
+lfs = require "cc.lfs"
 alt_getopt = require "alt_getopt"
 
 import insert, concat from table

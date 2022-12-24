@@ -2,7 +2,7 @@ local unpack
 unpack = require("moonscript.util").unpack
 local P, C, S, Cp, Cmt, V
 do
-  local _obj_0 = require("lpeg")
+  local _obj_0 = require("cc.lpeg")
   P, C, S, Cp, Cmt, V = _obj_0.P, _obj_0.C, _obj_0.S, _obj_0.Cp, _obj_0.Cmt, _obj_0.V
 end
 local ntype

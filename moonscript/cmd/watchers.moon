@@ -77,7 +77,7 @@ class SleepWatcher extends Watcher
 
   each_update: =>
     coroutine.wrap ->
-      lfs = require "lfs"
+      lfs = require "cc.lfs"
       sleep = @get_sleep_func!
 
       @print_start "polling", plural #@file_list, "files"

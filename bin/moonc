@@ -1,11 +1,9 @@
-#!/usr/bin/env lua
-
 rawset(_G, "arg", { ... }) -- compatibility with argparse
 
-package.path = "/?;/?.lua;/?/init.lua;/rom/modules/main/?;/rom/modules/main/?.lua;/rom/modules/main/?/init.lua"
+-- package.path = "/?;/?.lua;/?/init.lua;/rom/modules/main/?;/rom/modules/main/?.lua;/rom/modules/main/?/init.lua"
 
-local argparse = require "argparse"
-local lfs = require "lfs"
+local argparse = require "cc.argparse"
+local lfs = require "cc.lfs"
 
 local parser = argparse()
 
@@ -27,14 +25,14 @@ parser:mutex(
 parser:flag("-",
   "Read from standard in, print to standard out (Must be only argument)")
 
-local read_stdin = arg[1] == "-" -- luacheck: ignore 113
+local read_stdin = _G.arg[1] == "-" -- luacheck: ignore 113
 
 if not read_stdin then
   parser:argument("file/directory"):args("+")
 else
   if arg[2] ~= nil then
     io.stderr:write("- must be the only argument\n")
-    os.exit(1)
+    error(nil, 0)
   end
 end
 
@@ -43,7 +41,7 @@ local opts = read_stdin and {} or parser:parse()
 if opts.version then
   local v = require "moonscript.version"
   v.print_version()
-  os.exit()
+  error(nil, 0)
 end
 
 function log_msg(...)
@@ -128,7 +126,7 @@ if read_stdin then
   end
 
   print(code)
-  os.exit()
+  error(nil, 0)
 end
 
 local inputs = opts["file/directory"]
@@ -216,7 +214,7 @@ elseif opts.lint then
     end
   end
   if has_linted_with_error then
-    os.exit(1)
+    error(nil, 0)
   end
 else
   for _, tuple in ipairs(files) do

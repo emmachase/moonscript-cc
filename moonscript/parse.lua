@@ -1,5 +1,5 @@
 local debug_grammar = false
-local lpeg = require("lpeg")
+local lpeg = require("cc.lpeg")
 lpeg.setmaxstack(10000)
 local err_msg = "Failed to parse:%s\n [%d] >>    %s"
 local Stack

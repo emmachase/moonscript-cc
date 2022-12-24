@@ -1,6 +1,6 @@
 -- assorted utilities for moonc command line tool
 
-lfs = require "lfs"
+lfs = require "cc.lfs"
 
 import split from require "moonscript.util"
 

@@ -2,10 +2,10 @@ local safe_module
 safe_module = require("moonscript.util").safe_module
 local S, P, R, C
 do
-  local _obj_0 = require("lpeg")
+  local _obj_0 = require("cc.lpeg")
   S, P, R, C = _obj_0.S, _obj_0.P, _obj_0.R, _obj_0.C
 end
-local lpeg = require("lpeg")
+local lpeg = require("cc.lpeg")
 local L = lpeg.luversion and lpeg.L or function(v)
   return #v
 end

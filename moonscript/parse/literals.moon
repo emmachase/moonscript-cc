@@ -1,8 +1,8 @@
 -- non-recursive parsers
 import safe_module from require "moonscript.util"
-import S, P, R, C from require "lpeg"
+import S, P, R, C from require "cc.lpeg"
 
-lpeg = require "lpeg"
+lpeg = require "cc.lpeg"
 L = lpeg.luversion and lpeg.L or (v) -> #v
 
 White = S" \t\r\n"^0

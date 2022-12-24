@@ -1,5 +1,4 @@
-#!/usr/bin/env lua
-local argparse = require("argparse")
+local argparse = require("cc.argparse")
 local moonscript = require("moonscript.base")
 local util = require("moonscript.util")
 local errors = require("moonscript.errors")
@@ -46,7 +45,7 @@ local run
 run = function()
   if opts.version then
     require("moonscript.version").print_version()
-    os.exit()
+    error(nil, 0)
   end
   local script_fname = opts.script
   args = {
@@ -62,7 +61,7 @@ run = function()
   end)
   if not (passed) then
     print_err(err)
-    os.exit(1)
+    error(nil, 0)
   end
   if not (moonscript_chunk) then
     if lua_parse_error then
@@ -70,7 +69,7 @@ run = function()
     else
       print_err("Can't file file: " .. tostring(script_fname))
     end
-    os.exit(1)
+    error(nil, 0)
   end
   util.getfenv(moonscript_chunk).arg = args
   local run_chunk
@@ -104,7 +103,7 @@ run = function()
         util.trim(trace)
       }, "\n"))
     end
-    return os.exit(1)
+    return error(nil, 0)
   else
     if cov then
       cov:stop()
@@ -113,4 +112,3 @@ run = function()
   end
 end
 return run()
--- vim: set filetype=lua:

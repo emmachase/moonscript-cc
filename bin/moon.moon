@@ -1,4 +1,4 @@
-argparse = require "argparse"
+argparse = require "cc.argparse"
 
 moonscript = require "moonscript.base"
 util = require "moonscript.util"
@@ -29,7 +29,7 @@ run = ->
 
   if opts.version
     require("moonscript.version").print_version!
-    os.exit!
+    error nil, 0
 
   script_fname = opts.script
 
@@ -46,7 +46,7 @@ run = ->
 
   unless passed
     print_err err
-    os.exit 1
+    error nil, 0
 
   unless moonscript_chunk
     if lua_parse_error
@@ -54,7 +54,7 @@ run = ->
     else
       print_err "Can't file file: #{script_fname}"
 
-    os.exit 1
+    error nil, 0
 
   util.getfenv(moonscript_chunk).arg = args
 
@@ -90,7 +90,7 @@ run = ->
         err,
         util.trim trace
       }, "\n"
-    os.exit 1
+    error nil, 0
   else
     if cov
       cov\stop!
