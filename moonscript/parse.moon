@@ -318,8 +318,8 @@ build_grammar = wrap_env debug_grammar, (root) ->
 
   g, state
 
+g, state = build_grammar!
 file_parser = ->
-  g, state = build_grammar!
   file_grammar = White * g * White * -1
 
   {

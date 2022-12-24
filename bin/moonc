@@ -1,5 +1,9 @@
 #!/usr/bin/env lua
 
+rawset(_G, "arg", { ... }) -- compatibility with argparse
+
+package.path = "/?;/?.lua;/?/init.lua;/rom/modules/main/?;/rom/modules/main/?.lua;/rom/modules/main/?/init.lua"
+
 local argparse = require "argparse"
 local lfs = require "lfs"
 
@@ -232,7 +236,7 @@ else
 
     if not success then
       io.stderr:write(fname .. "\t" .. err .. "\n")
-      os.exit(1)
+      error(nil, 0)
     end
   end
 end

@@ -202,9 +202,9 @@ local build_grammar = wrap_env(debug_grammar, function(root)
   })
   return g, state
 end)
+local g, state = build_grammar()
 local file_parser
 file_parser = function()
-  local g, state = build_grammar()
   local file_grammar = White * g * White * -1
   return {
     match = function(self, str)

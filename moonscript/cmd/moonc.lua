@@ -116,7 +116,7 @@ compile_file_text = function(text, opts)
 end
 write_file = function(fname, code)
   mkdir(parse_dir(fname))
-  local f, err = io.open(fname, "w")
+  local f, err = io.open(fname, "wb")
   if not (f) then
     return nil, err
   end

@@ -116,7 +116,7 @@ compile_file_text = (text, opts={}) ->
 
 write_file = (fname, code) ->
   mkdir parse_dir fname
-  f, err = io.open fname, "w"
+  f, err = io.open fname, "wb"
   unless f
     return nil, err
 
