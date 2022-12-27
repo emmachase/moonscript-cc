@@ -1333,7 +1333,7 @@ if E then local A=E:read("*a")E:close()
 local O,I=g(A,"@"..tostring(T))if not O then error(T..": "..I)end;return O end;return nil,"Could not find moon file"end
 g=function(...)local z,_,E,T,A=c(...)E=E or"=(moonscript.loadstring)"local O,I=v(_,z)if not
 (O)then return nil,I end;if E then y[E]=I end;return
-(f.loadstring or f.load)(O,E,m({T,A}))end
+(f.load or f.loadstring)(O,E,m({T,A}))end
 k=function(z,...)local _,E=io.open(z)if not(_)then return nil,E end
 local T=assert(_:read("*a"))_:close()return g(T,"@"..tostring(z),...)end
 q=function(...)local z=assert(k(...))return z()end
@@ -2825,7 +2825,7 @@ y=function()if f.version then
 i("moonscript.version").print_version()error(nil,0)end;local p=f.script
 m={d(arg,u+1)}m[-1]=arg[0]m[0]=f.script;local v,b
 local g,k=pcall(function()
-v,b=s.loadfile(p,{implicitly_return_root=false})end)if not(g)then w(k)error(nil,0)end
+v,b=s.loadfile(p,"t",_ENV,{implicitly_return_root=false})end)if not(g)then w(k)error(nil,0)end
 if not(v)then if b then w(b)else
 w("Can't file file: "..tostring(p))end;error(nil,0)end;h.getfenv(v).arg=m;local q;q=function()s.insert_loader()v(d(m))return
 s.remove_loader()end;if

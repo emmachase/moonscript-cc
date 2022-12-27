@@ -1,4 +1,4 @@
-#!/usr/bin/env moon
+#!/build/moon.lua
 
 -- concatenate a collection of lua modules into one
 

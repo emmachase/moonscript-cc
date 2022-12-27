@@ -6305,7 +6305,7 @@ loadstring = function(...)
   if chunk_name then
     line_tables[chunk_name] = ltable_or_err
   end
-  return (lua.loadstring or lua.load)(code, chunk_name, unpack({
+  return (lua.load or lua.loadstring)(code, chunk_name, unpack({
     mode,
     env
   }))
@@ -11735,7 +11735,7 @@ run = function()
   args[0] = opts.script
   local moonscript_chunk, lua_parse_error
   local passed, err = pcall(function()
-    moonscript_chunk, lua_parse_error = moonscript.loadfile(script_fname, {
+    moonscript_chunk, lua_parse_error = moonscript.loadfile(script_fname, "t", _ENV, {
       implicitly_return_root = false
     })
   end)

@@ -40,7 +40,7 @@ run = ->
   local moonscript_chunk, lua_parse_error
 
   passed, err = pcall ->
-    moonscript_chunk, lua_parse_error = moonscript.loadfile script_fname, {
+    moonscript_chunk, lua_parse_error = moonscript.loadfile script_fname, "t", _ENV, {
       implicitly_return_root: false
     }
 

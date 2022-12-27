@@ -6305,7 +6305,7 @@ loadstring = function(...)
   if chunk_name then
     line_tables[chunk_name] = ltable_or_err
   end
-  return (lua.loadstring or lua.load)(code, chunk_name, unpack({
+  return (lua.load or lua.loadstring)(code, chunk_name, unpack({
     mode,
     env
   }))

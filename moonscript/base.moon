@@ -65,7 +65,7 @@ loadstring = (...) ->
 
   line_tables[chunk_name] = ltable_or_err if chunk_name
   -- the unpack prevents us from passing nil
-  (lua.loadstring or lua.load) code, chunk_name, unpack { mode, env }
+  (lua.load or lua.loadstring) code, chunk_name, unpack { mode, env }
 
 loadfile = (fname, ...) ->
   file, err = io.open fname
